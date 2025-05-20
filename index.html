@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王聪</title>
+    <title>王聪 | Cong Wang</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -170,14 +170,116 @@
                         <li>获“南京大学毓秀青年学者”</li>
                         <li>获得“博士后创新人才支持计划”</li>
                     </ul>
+                    <h3>博士-物理学院-南京大学</h3>
+                    <p class="text-muted">2020年7月 - 2022年10月</p>
+                    <h3>硕士-物理学院-南京大学</h3>
+                    <p class="text-muted">2017年7月 - 2022年6月</p>
+                    <h3>本科-理学院应用物理系-西安交通大学</h3>
+                    <p class="text-muted">2013年9月 - 2017年6月</p>
                 </div>
-               
-
-                
+             
             </div>
         </section>
-    </div>
+        <section>
+            <h2>发表文章</h2>
+            <div class="articles-container">
+                <!-- 单篇文章示例 -->
+                <div class="article-item">
+                    <h3>基于深度学习的图像识别优化研究</h3>
+                    <div class="article-meta">
+                        <span class="authors">张三, 李四</span>
+                        <span class="journal"><i class="fas fa-book-open"></i> 计算机学报</span>
+                        <span class="date"><i class="far fa-calendar-alt"></i> 2023-09</span>
+                    </div>
+                    <div class="article-links">
+                        <a href="https://doi.org/xx.xxxx/xxxxx" target="_blank" class="doi-link">
+                            <i class="fas fa-external-link-alt"></i> DOI
+                        </a>
+                        <a href="preprint.pdf" class="pdf-link">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- 第二篇文章示例 -->
+                <div class="article-item">
+                    <h3>Web3.0时代的前端架构演进</h3>
+                    <div class="article-meta">
+                        <span class="authors">张三, 王五</span>
+                        <span class="journal"><i class="fas fa-book-open"></i> 软件工程前沿</span>
+                        <span class="date"><i class="far fa-calendar-alt"></i> 2022-06</span>
+                    </div>
+                    <div class="article-links">
+                        <a href="https://example.com/article" target="_blank" class="doi-link">
+                            <i class="fas fa-external-link-alt"></i> 阅读全文
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        
+    </div>
+    <style>
+        /* 添加在现有样式中 */
+        .articles-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+    
+        .article-item {
+            padding: 20px;
+            border-left: 4px solid var(--secondary-color);
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+    
+        .article-item:hover {
+            transform: translateX(10px);
+            background-color: #f5f5f5;
+        }
+    
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 10px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+    
+        .article-meta i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+    
+        .article-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+        }
+    
+        .article-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+    
+        .article-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    
+        .doi-link { border-color: #2ecc71; color: #2ecc71; }
+        .doi-link:hover { background-color: #2ecc71; }
+        .pdf-link { border-color: #e74c3c; color: #e74c3c; }
+        .pdf-link:hover { background-color: #e74c3c; }
+    </style>
     <script>
         // 可以根据需要添加交互功能
         document.addEventListener('DOMContentLoaded', () => {
