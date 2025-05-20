@@ -3,25 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张三 - 个人简历</title>
+    <title>王聪 Curriculum Vitae</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
-            --accent-color: #e74c3c;
             --text-color: #333;
-            --bg-color: #f8f9fa;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes scaleIn {
-            from { transform: scale(0.95); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
 
         * {
@@ -31,72 +19,24 @@
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--bg-color);
-            animation: fadeIn 1s ease-out;
+            background-color: #f5f6fa;
         }
 
-        /* 语言切换 */
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            display: flex;
-            gap: 10px;
-        }
-
-        .lang-btn {
-            padding: 8px 15px;
-            border: 2px solid var(--primary-color);
-            border-radius: 20px;
-            background: rgba(255,255,255,0.9);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .lang-btn:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         /* 头部样式 */
         header {
             text-align: center;
-            padding: 100px 20px 60px;
-            position: relative;
-            overflow: hidden;
+            padding: 50px 20px;
+            background-color: var(--primary-color);
             color: white;
-        }
-
-        .header-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('header-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: blur(3px) brightness(0.7);
-            z-index: 1;
-            transform: scale(1.05);
-            transition: transform 10s ease;
-        }
-
-        header:hover .header-bg {
-            transform: scale(1);
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            opacity: 0;
-            animation: fadeIn 0.8s 0.3s forwards;
         }
 
         .avatar {
@@ -104,339 +44,261 @@
             height: 150px;
             border-radius: 50%;
             margin-bottom: 20px;
-            border: 3px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .avatar:hover {
-            transform: rotate(5deg) scale(1.05);
+            border: 3px solid white;
         }
 
         /* 主要内容区 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section {
+        section {
             background: white;
-            margin: 25px 0;
+            margin: 20px 0;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .section.active {
-            opacity: 1;
-            transform: translateY(0);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         h2 {
             color: var(--secondary-color);
-            margin-bottom: 25px;
-            position: relative;
-            padding-left: 20px;
-            font-size: 1.8em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 80%;
-            background: var(--secondary-color);
-            border-radius: 4px;
+        /* 技能标签 */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        /* 时间轴容器 */
-        .timeline-container {
-            position: relative;
-            padding-left: 30px;
-            margin: 40px 0;
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
         }
-    
-        /* 主时间轴线 */
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 15px;
-            bottom: 15px;
-            width: 3px;
-            background: var(--secondary-color);
-            border-radius: 2px;
-        }
-    
-        /* 时间轴条目 */
+
+        /* 时间轴样式 */
         .timeline-item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--secondary-color);
             position: relative;
-            margin: 40px 0;
-            padding-left: 30px;
-            transition: all 0.3s ease;
         }
-    
-        /* 时间轴节点 */
+
         .timeline-item::before {
             content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--secondary-color);
             position: absolute;
-            left: -26px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            background: white;
-            border: 3px solid var(--secondary-color);
+            left: -8px;
+            top: 25px;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            z-index: 2;
-        }
-    
-        /* 条目连接线 */
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 30px;
-            bottom: -40px;
-            width: 2px;
-            background: #e0e0e0;
-        }
-    
-        /* 最后一个条目不需要连接线 */
-        .timeline-item:last-child::after {
-            display: none;
-        }
-    
-        /* 悬停效果 */
-        .timeline-item:hover {
-            transform: translateX(10px);
-        }
-    
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            .timeline-container {
-                padding-left: 20px;
-            }
-            
-            .timeline-item::before {
-                left: -21px;
-                width: 14px;
-                height: 14px;
-            }
         }
 
-        /* 发表文章 */
-        .publication-item {
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #2ecc71;
-            background: rgba(46, 204, 113, 0.05);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+        /* 联系信息 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
 
-        .publication-item::after {
-            content: '';
-            position: absolute;
-            left: -100%;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent,
-                rgba(46, 204, 113, 0.1),
-                transparent);
-            transition: 0.5s;
-        }
-
-        .publication-item:hover::after {
-            left: 100%;
-        }
-
-        /* 荣誉卡片 */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .award-card {
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #eee;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .award-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
-
-        .award-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--accent-color);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .award-card:hover::before {
-            transform: scaleX(1);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* 响应式设计 */
         @media (max-width: 768px) {
             .container {
-                padding: 20px 10px;
+                padding: 10px;
             }
             
-            .section {
+            section {
                 padding: 20px;
-            }
-            
-            header {
-                padding: 80px 10px 40px;
-            }
-
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="lang-switch">
-        <button class="lang-btn" onclick="toggleLanguage('zh')">中文</button>
-        <button class="lang-btn" onclick="toggleLanguage('en')">English</button>
-    </div>
-
     <header>
-        <div class="header-bg"></div>
-        <div class="header-content">
-            <img src="avatar.jpg" alt="张三" class="avatar">
-            <h1 data-lang="zh">张三</h1>
-            <h1 data-lang="en" style="display:none">John Zhang</h1>
-            <p data-lang="zh">人工智能研究员</p>
-            <p data-lang="en" style="display:none">AI Researcher</p>
+        <img src="your-avatar.jpg" alt="王聪" class="avatar">
+        <h1>王聪 | Cong Wang</h1>
+        <p>博士 Doctor</p>
+        <div class="contact-info mt-20">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                cong@nju.edu.cn
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                congnju.github.io/
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <!-- 研究方向 -->
-        <section class="section">
-            <h2 data-lang="zh">研究方向</h2>
-            <h2 data-lang="en" style="display:none">Research Areas</h2>
-            <div class="keywords">
-                <span class="keyword-tag">机器学习</span>
-                <span class="keyword-tag">计算机视觉</span>
-                <span class="keyword-tag">自然语言处理</span>
+        <section>
+            <h2>研究方向|RESEARCH INTEREST</h2>
+                <ul>
+                    <li>忆阻器为代表的新型存算一体器件、集成电路芯片、以及智能系统与应用|Memristor-based in-memory computing devices, chips, and systems</li>
+                    <li>类脑计算硬件和人工神经网络的交叉研究|Neuromorphic computing hardware and artificial neural networks</li>
+                </ul>
+        </section>
+
+        <section>
+            <h2>关键词 | Keywords</h2>
+            <div class="skills">
+                <span class="skill-tag">忆阻器|Memristor</span>
+                <span class="skill-tag">存内计算|In-memory computing</span>
+                <span class="skill-tag">生物电子工程|Bioelectronic Engineering</span>
+                <span class="skill-tag">神经网络|Neural network</span>
+                <span class="skill-tag">集成电路|IC</span>
+                <span class="skill-tag">智能系统|Intelligent system</span>
             </div>
         </section>
 
-        <!-- 工作经历 -->
-        <section class="section">
-            <h2 data-lang="zh">工作经历</h2>
-            <h2 data-lang="en" style="display:none">Experience</h2>
-            
-            <div class="timeline-container">
-                <!-- 条目1 -->
+        <section>
+            <h2>学习和工作经历|EDUCATION and EMPLOYMENT</h2>
+            <div class="timeline">
                 <div class="timeline-item">
-                    <h3 data-lang="zh">高级研究员 · ABC实验室</h3>
-                    <h3 data-lang="en" style="display:none">Senior Researcher · ABC Lab</h3>
-                    <p class="time-period">2020 - Present</p>
+                    <h3>博士后-电子科学与工程学院-南京大学|Postdoctoral Fellow, Nanjing University</h3>
+                    <p class="text-muted">2022/10 - today</p>
                     <ul>
-                        <li data-lang="zh">主导AI项目开发</li>
-                        <li data-lang="en" style="display:none">Lead AI projects</li>
+                        <li>获“小米青年学者”</li>
+                        <li>获“南京大学毓秀青年学者”</li>
+                        <li>获得“博士后创新人才支持计划”</li>
                     </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>博士-物理学院-南京大学|Ph.D student, School of Physics, Nanjing University</h3>
+                    <p class="text-muted">2020/07 - 2022/10</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>硕士-物理学院-南京大学|M.S student, School of Physics, Nanjing University</h3>
+                    <p class="text-muted">2017/07 - 2022/06</p>
+                </div>      
+                <div class="timeline-item">
+                    <h3>本科-理学院应用物理系-西安交通大学|B.S student, School of Physics, Xian Jiaotong University</h3>
+                    <p class="text-muted">2013/09 - 2017/06</p>
+                </div>     
+
+             
+            </div>
+        </section>
+        <section>
+            <h2>发表文章|PUBLICATIONS</h2>
+            <div class="articles-container">
+                <!-- 单篇文章示例 -->
+                <div class="article-item">
+                    <h3>基于深度学习的图像识别优化研究</h3>
+                    <div class="article-meta">
+                        <span class="authors">张三, 李四</span>
+                        <span class="journal"><i class="fas fa-book-open"></i> 计算机学报</span>
+                        <span class="date"><i class="far fa-calendar-alt"></i> 2023-09</span>
+                    </div>
+                    <div class="article-links">
+                        <a href="https://doi.org/xx.xxxx/xxxxx" target="_blank" class="doi-link">
+                            <i class="fas fa-external-link-alt"></i> DOI
+                        </a>
+                        <a href="preprint.pdf" class="pdf-link">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </div>
                 </div>
         
-                <!-- 条目2 -->
-                <div class="timeline-item">
-                    <h3 data-lang="zh">机器学习工程师 · XYZ科技</h3>
-                    <h3 data-lang="en" style="display:none">ML Engineer · XYZ Tech</h3>
-                    <p class="time-period">2018 - 2020</p>
-                    <ul>
-                        <li data-lang="zh">开发推荐系统</li>
-                        <li data-lang="en" style="display:none">Develop recommendation system</li>
-                    </ul>
+                <!-- 第二篇文章示例 -->
+                <div class="article-item">
+                    <h3>Web3.0时代的前端架构演进</h3>
+                    <div class="article-meta">
+                        <span class="authors">张三, 王五</span>
+                        <span class="journal"><i class="fas fa-book-open"></i> 软件工程前沿</span>
+                        <span class="date"><i class="far fa-calendar-alt"></i> 2022-06</span>
+                    </div>
+                    <div class="article-links">
+                        <a href="https://example.com/article" target="_blank" class="doi-link">
+                            <i class="fas fa-external-link-alt"></i> 阅读全文
+                        </a>
+                    </div>
                 </div>
+            </div>
+        </section>
+
         
-                <!-- 条目3 -->
-                <div class="timeline-item">
-                    <h3 data-lang="zh">算法实习生 · 创新中心</h3>
-                    <h3 data-lang="en" style="display:none">Algorithm Intern · Innovation Center</h3>
-                    <p class="time-period">2017 - 2018</p>
-                    <ul>
-                        <li data-lang="zh">参与NLP项目</li>
-                        <li data-lang="en" style="display:none">Participate in NLP projects</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 发表文章 -->
-        <section class="section">
-            <h2 data-lang="zh">发表文章</h2>
-            <h2 data-lang="en" style="display:none">Publications</h2>
-            <div class="publication-item">
-                <h3 data-lang="zh">基于深度学习的图像识别方法</h3>
-                <h3 data-lang="en" style="display:none">Deep Learning Based Image Recognition</h3>
-                <p>IEEE CVPR 2023</p>
-            </div>
-        </section>
-
-        <!-- 获得荣誉 -->
-        <section class="section">
-            <h2 data-lang="zh">获得荣誉</h2>
-            <h2 data-lang="en" style="display:none">Awards</h2>
-            <div class="awards-grid">
-                <div class="award-card">
-                    <h3 data-lang="zh">最佳论文奖</h3>
-                    <h3 data-lang="en" style="display:none">Best Paper Award</h3>
-                    <p>2022</p>
-                </div>
-            </div>
-        </section>
     </div>
-
-    <script>
-        // 语言切换
-        function toggleLanguage(lang) {
-            document.querySelectorAll('[data-lang]').forEach(element => {
-                element.style.display = element.getAttribute('data-lang') === lang ? 'block' : 'none';
-            });
+    <style>
+        /* 添加在现有样式中 */
+        .articles-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
-
-        // 滚动动画
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+    
+        .article-item {
+            padding: 20px;
+            border-left: 4px solid var(--secondary-color);
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+    
+        .article-item:hover {
+            transform: translateX(10px);
+            background-color: #f5f5f5;
+        }
+    
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 10px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+    
+        .article-meta i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+    
+        .article-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+        }
+    
+        .article-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+    
+        .article-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    
+        .doi-link { border-color: #2ecc71; color: #2ecc71; }
+        .doi-link:hover { background-color: #2ecc71; }
+        .pdf-link { border-color: #e74c3c; color: #e74c3c; }
+        .pdf-link:hover { background-color: #e74c3c; }
+    </style>
+    <script>
+        // 可以根据需要添加交互功能
+        document.addEventListener('DOMContentLoaded', () => {
+            // 示例：为所有技能标签添加随机颜色
+            const tags = document.querySelectorAll('.skill-tag');
+            const colors = ['#3498db', '#2ecc71', '#9b59b6', '#e67e22'];
+            tags.forEach(tag => {
+                tag.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
         });
-
-        // 初始化显示中文
-        toggleLanguage('zh');
     </script>
 </body>
 </html>
