@@ -1,8 +1,196 @@
-<p>Hello 大家好</p>
-<p>我是霸都丶傲天，这是我的个人网站。 </p>
-<p>很高兴你来到这里, 你可以在以下的网站找到我</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张三 - 个人简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+        }
 
-<ul>
-  <li> <a href="https://www.zhihu.com/people/AJLoveChina">知乎</a> </li>
-  <li> <a href="http://hejie.nigeerhuo.com">我的博客(已经不更细了,现在在知乎写文章)</a> </li>
-</ul>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f6fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid white;
+        }
+
+        /* 主要内容区 */
+        section {
+            background: white;
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* 技能标签 */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* 时间轴样式 */
+        .timeline-item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--secondary-color);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--secondary-color);
+            position: absolute;
+            left: -8px;
+            top: 25px;
+            border-radius: 50%;
+        }
+
+        /* 联系信息 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="your-avatar.jpg" alt="张三" class="avatar">
+        <h1>张三</h1>
+        <p>全栈开发工程师</p>
+        <div class="contact-info mt-20">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                zhangsan@example.com
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                github.com/zhangsan
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                +86 138-1234-5678
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>个人简介</h2>
+            <p>全栈开发工程师，5年Web开发经验。精通JavaScript生态，熟悉React、Vue等前端框架和Node.js后端开发。有丰富的项目管理和团队协作经验。</p>
+        </section>
+
+        <section>
+            <h2>技术栈</h2>
+            <div class="skills">
+                <span class="skill-tag">JavaScript/ES6+</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">AWS</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>工作经历</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>高级开发工程师 · ABC科技有限公司</h3>
+                    <p class="text-muted">2020年6月 - 至今</p>
+                    <ul>
+                        <li>主导开发公司核心业务系统，提升系统性能40%</li>
+                        <li>设计并实施微服务架构改造</li>
+                        <li>带领5人前端开发团队</li>
+                    </ul>
+                </div>
+                <!-- 更多经历... -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 可以根据需要添加交互功能
+        document.addEventListener('DOMContentLoaded', () => {
+            // 示例：为所有技能标签添加随机颜色
+            const tags = document.querySelectorAll('.skill-tag');
+            const colors = ['#3498db', '#2ecc71', '#9b59b6', '#e67e22'];
+            tags.forEach(tag => {
+                tag.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            });
+        });
+    </script>
+</body>
+</html>
