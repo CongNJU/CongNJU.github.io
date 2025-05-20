@@ -155,30 +155,80 @@
             border-radius: 4px;
         }
 
-        /* 时间轴 */
-        .timeline-item {
-            padding: 25px;
-            margin: 25px 0;
-            border-left: 3px solid var(--secondary-color);
+        /* 时间轴容器 */
+        .timeline-container {
             position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+    
+        /* 主时间轴线 */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15px;
+            bottom: 15px;
+            width: 3px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+    
+        /* 时间轴条目 */
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 30px;
             transition: all 0.3s ease;
         }
-
+    
+        /* 时间轴节点 */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 3px solid var(--secondary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+    
+        /* 条目连接线 */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 30px;
+            bottom: -40px;
+            width: 2px;
+            background: #e0e0e0;
+        }
+    
+        /* 最后一个条目不需要连接线 */
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    
+        /* 悬停效果 */
         .timeline-item:hover {
             transform: translateX(10px);
         }
-
-        .timeline-item::before {
-            content: '';
-            width: 16px;
-            height: 16px;
-            background: var(--secondary-color);
-            position: absolute;
-            left: -10px;
-            top: 24px;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .timeline-container {
+                padding-left: 20px;
+            }
+            
+            .timeline-item::before {
+                left: -21px;
+                width: 14px;
+                height: 14px;
+            }
         }
 
         /* 发表文章 */
@@ -303,43 +353,39 @@
             <h2 data-lang="zh">工作经历</h2>
             <h2 data-lang="en" style="display:none">Experience</h2>
             
-            <!-- 第一个时间线条目 -->
-            <div class="timeline-item">
-                <h3 data-lang="zh">高级研究员 · ABC人工智能实验室</h3>
-                <h3 data-lang="en" style="display:none">Senior Researcher · ABC AI Lab</h3>
-                <p>2020 - Present</p>
-                <ul>
-                    <li data-lang="zh">主导多个计算机视觉项目研发</li>
-                    <li data-lang="en" style="display:none">Led multiple computer vision projects</li>
-                    <li data-lang="zh">系统性能优化提升40%</li>
-                    <li data-lang="en" style="display:none">Improved system performance by 40%</li>
-                </ul>
-            </div>
+            <div class="timeline-container">
+                <!-- 条目1 -->
+                <div class="timeline-item">
+                    <h3 data-lang="zh">高级研究员 · ABC实验室</h3>
+                    <h3 data-lang="en" style="display:none">Senior Researcher · ABC Lab</h3>
+                    <p class="time-period">2020 - Present</p>
+                    <ul>
+                        <li data-lang="zh">主导AI项目开发</li>
+                        <li data-lang="en" style="display:none">Lead AI projects</li>
+                    </ul>
+                </div>
         
-            <!-- 新增第二个时间线条目 -->
-            <div class="timeline-item">
-                <h3 data-lang="zh">机器学习工程师 · XYZ科技</h3>
-                <h3 data-lang="en" style="display:none">Machine Learning Engineer · XYZ Tech</h3>
-                <p>2018 - 2020</p>
-                <ul>
-                    <li data-lang="zh">开发智能推荐系统</li>
-                    <li data-lang="en" style="display:none">Developed intelligent recommendation system</li>
-                    <li data-lang="zh">实现用户点击率提升25%</li>
-                    <li data-lang="en" style="display:none">Achieved 25% CTR improvement</li>
-                </ul>
-            </div>
+                <!-- 条目2 -->
+                <div class="timeline-item">
+                    <h3 data-lang="zh">机器学习工程师 · XYZ科技</h3>
+                    <h3 data-lang="en" style="display:none">ML Engineer · XYZ Tech</h3>
+                    <p class="time-period">2018 - 2020</p>
+                    <ul>
+                        <li data-lang="zh">开发推荐系统</li>
+                        <li data-lang="en" style="display:none">Develop recommendation system</li>
+                    </ul>
+                </div>
         
-            <!-- 新增第三个时间线条目 -->
-            <div class="timeline-item">
-                <h3 data-lang="zh">算法实习生 · 创新研究院</h3>
-                <h3 data-lang="en" style="display:none">Algorithm Intern · Innovation Lab</h3>
-                <p>2017 - 2018</p>
-                <ul>
-                    <li data-lang="zh">参与自然语言处理项目</li>
-                    <li data-lang="en" style="display:none">Participated in NLP projects</li>
-                    <li data-lang="zh">开发文本分类模型</li>
-                    <li data-lang="en" style="display:none">Developed text classification model</li>
-                </ul>
+                <!-- 条目3 -->
+                <div class="timeline-item">
+                    <h3 data-lang="zh">算法实习生 · 创新中心</h3>
+                    <h3 data-lang="en" style="display:none">Algorithm Intern · Innovation Center</h3>
+                    <p class="time-period">2017 - 2018</p>
+                    <ul>
+                        <li data-lang="zh">参与NLP项目</li>
+                        <li data-lang="en" style="display:none">Participate in NLP projects</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
