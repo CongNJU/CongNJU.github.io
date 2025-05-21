@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前沿科技研究中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #64ffda;
+            --accent: #8892b0;
+            --light: #ccd6f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: linear-gradient(45deg, rgba(10,25,47,0.9), rgba(10,25,47,0.7)),
+                        url('lab-bg.jpg') center/cover fixed;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 研究领域 */
+        .research-areas {
+            padding: 100px 5%;
+            background: #020c1b;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .research-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: 0.3s;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* 数据展示 */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 4rem 5%;
+            background: var(--primary);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .stats { grid-template-columns: 1fr; }
+        }
+
+        /* 动画 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">QYLab</a>
+        <div class="nav-links">
+            <a href="#about">关于我们</a>
+            <a href="#research">研究领域</a>
+            <a href="#news">新闻动态</a>
+            <a href="#contact">联系我们</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>探索科技前沿<br>创造未来可能</h1>
+            <p>致力于人工智能、量子计算与生物科技的交叉领域研究</p>
+            <div class="scroll-down">
+                <i class="fas fa-chevron-down fa-2x"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="research-areas" id="research">
+        <h2>核心研究领域</h2>
+        <div class="grid-container">
+            <div class="research-card">
+                <i class="fas fa-brain card-icon"></i>
+                <h3>人工智能</h3>
+                <p>深度学习、计算机视觉、自然语言处理</p>
+            </div>
+            <div class="research-card">
+                <i class="fas fa-atom card-icon"></i>
+                <h3>量子计算</h3>
+                <p>量子算法、量子通信、量子硬件</p>
+            </div>
+            <div class="research-card">
+                <i class="fas fa-dna card-icon"></i>
+                <h3>合成生物学</h3>
+                <p>基因编辑、生物制造、细胞工程</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <p>科研项目</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">200+</div>
+            <p>学术论文</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <p>国际合作</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <p>技术专利</p>
+        </div>
+    </section>
+
+    <script>
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.research-card, .stat-item').forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(30px)';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
