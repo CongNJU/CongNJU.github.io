@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王聪 - 南京大学</title>
+    <title>王聪-南京大学</title>
     <style>
         * {
             margin: 0;
@@ -695,6 +695,282 @@
         .fade-in {
             animation: fadeIn 0.6s ease-out;
         }
+        /* Research Gallery */
+        .research-gallery-section {
+            margin-top: 60px;
+        }
+
+        .gallery-title {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: -0.003em;
+        }
+
+        .research-gallery-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .research-gallery {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .research-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-item {
+            flex: 0 0 300px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 225px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            margin-top: 16px;
+            font-size: 17px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-primary);
+            line-height: 1.47059;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            color: var(--text-primary);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .gallery-nav {
+                background: rgba(29, 29, 31, 0.9);
+            }
+        }
+
+        .gallery-nav:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .gallery-nav-left {
+            left: -22px;
+        }
+
+        .gallery-nav-right {
+            right: -22px;
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--primary);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            background: var(--bg-primary);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            color: var(--text-primary);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-close {
+                background: rgba(29, 29, 31, 0.9);
+            }
+        }
+
+        .modal-close:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-text {
+            padding: 40px;
+        }
+
+        .modal-text h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.003em;
+            line-height: 1.125;
+        }
+
+        .modal-text p {
+            font-size: 17px;
+            line-height: 1.47059;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 734px) {
+            .gallery-nav {
+                display: none;
+            }
+
+            .gallery-item {
+                flex: 0 0 250px;
+            }
+
+            .modal-content {
+                width: 95%;
+                border-radius: 18px;
+            }
+
+            .modal-image {
+                height: 250px;
+            }
+
+            .modal-text {
+                padding: 24px;
+            }
+
+            .modal-text h3 {
+                font-size: 24px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -729,7 +1005,7 @@
                 <p class="subtitle">特聘研究员 · 助理教授 · 博导</p>
                 <p class="description">
                     南京大学 · 智能科学与技术学院<br>
-                    研究兴趣：存算一体芯片技术、类脑计算硬件与神经网络算法交叉、脑机智能<br>
+                    研究兴趣：存算一体芯片技术、类脑计算硬件与神经网络算法交叉、高效智能系统与应用<br>
                     长期招生：硕士、博士生 （信息、电子、计算机等背景）
                 </p>
                 <div class="hero-buttons">
@@ -804,7 +1080,7 @@
         <div class="card">
             <p class="card-description" style="color: black;">
                 专注于新型存算一体电子信息器件、集成电路芯片、以及高能效智能系统与应用。
-                致力于推动类脑计算硬件和人工神经网络的交叉方向研究，探索下一代新型算力架构。
+                致力于推动类脑计算硬件和人工神经网络的交叉方向研究,探索下一代新型算力架构。
             </p>
             <div class="tags">
                 <span class="tag" style="color: #0071e3;">存算一体技术</span>
@@ -817,7 +1093,92 @@
                 <span class="tag" style="color: #0071e3;">边端智能系统</span>
             </div>
         </div>
+
+        <!-- Research Gallery -->
+        <div class="research-gallery-section">
+            <h3 class="gallery-title">研究成果展示</h3>
+            <div class="research-gallery-container">
+                <button class="gallery-nav gallery-nav-left" aria-label="上一张">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <div class="research-gallery">
+                    <div class="gallery-item" data-index="0">
+                        <div class="gallery-image">
+                            <img src="research1.jpg" alt="存算一体芯片" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E存算一体芯片%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">存算一体芯片技术突破</p>
+                    </div>
+
+                    <div class="gallery-item" data-index="1">
+                        <div class="gallery-image">
+                            <img src="research2.jpg" alt="类脑计算" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E类脑计算系统%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">类脑计算硬件系统</p>
+                    </div>
+
+                    <div class="gallery-item" data-index="2">
+                        <div class="gallery-image">
+                            <img src="research3.jpg" alt="无线通信" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E无线通信系统%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">并行存内无线计算</p>
+                    </div>
+
+                    <div class="gallery-item" data-index="3">
+                        <div class="gallery-image">
+                            <img src="research4.jpg" alt="智能系统" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E智能机器人%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">智能机器人控制系统</p>
+                    </div>
+
+                    <div class="gallery-item" data-index="4">
+                        <div class="gallery-image">
+                            <img src="research5.gif" alt="IGZO DRAM" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3EIGZO DRAM%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">全模拟忆阻器网络自动驾驶小车</p>
+                    </div>
+                    
+                    <div class="gallery-item" data-index="4">
+                        <div class="gallery-image">
+                            <img src="researchx.jpg" alt="正在施工" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3EIGZO DRAM%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">全模拟忆阻器网络自动驾驶小车</p>
+                    </div>
+                </div>
+
+                <button class="gallery-nav gallery-nav-right" aria-label="下一张">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="gallery-dots"></div>
+        </div>
     </section>
+
+    <!-- Research Detail Modal -->
+    <div class="modal" id="researchModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="关闭">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-text">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Publications Section -->
     <section class="section" id="publications">
@@ -835,18 +1196,18 @@
 
         <div class="publication-card">
             <h3 class="publication-title">Parallel in-memory wireless computing</h3>
-            <p class="publication-authors"><strong>Cong Wang#</strong>, Gong-Jie Ruan#, Zai-Zheng Yang, Xing-Jian Yangdong, Yixiang Li, Liang Wu, Yingmeng Ge, Yichen Zhao, Chen Pan, Wei Wei, Li-Bo Wang, Bin Cheng, Zaichen Zhang, Chuan Zhang, Shi-Jun Liang*, Feng Miao*</p>
+            <p class="publication-authors"><strong>Cong Wang#</strong>,Gong-Jie Ruan#, Zai-Zheng Yang, Xing-Jian Yangdong, Yixiang Li*, Liang Wu, Yingmeng Ge, Yichen Zhao, Chen Pan, Wei Wei, Li-Bo Wang, Bin Cheng, Zaichen Zhang, Chuan Zhang, Shi-Jun Liang*, Feng Miao*</p>
             <p class="publication-journal">Nature Electronics 6, 381-389 (2023)</p>
         </div>
 
         <div class="publication-card">
             <h3 class="publication-title">Precision-Sustained Analog In-Memory Computing using IGZO DRAM Array with Quasi-Nonvolatile and Continuously Tunable Weights</h3>
             <p class="publication-authors"><strong>Cong Wang#</strong>, Xuan Feng#, Yu Shen#, Zhengwei Liao, Shuo Ding, Zhuo Li, Xing-Jian Yangdong, Yichen Zhao, Dehe Kong, Ding-Chang Zhang, Yang Lv, Ming-Hua Xuan, Xiao-Chuan Chen*, Shi-Jun Liang*, Feng Miao*</p>
-            <p class="publication-journal">IEDM 2025 13.1</p>
+            <p class="publication-journal">IEDM 13.1 (2025)</p>
         </div>
 
         <div class="publication-card">
-            <h3 class="publication-title">Advanced Neuromorphic Computing Research</h3>
+            <h3 class="publication-title">Ultrahigh-precision analog computing using memory-switching geometric ratio of transistors</h3>
             <p class="publication-authors">Xing-Jian Yangdong#, <strong>Cong Wang#*</strong>, Yichen Zhao#, Zi-Chun Wang, Zaizheng Yang, Zenglin Liu, Wentao Yu, Zhoujie Zeng, Shuang Wang, Wei Wei, Yu Shen, Dehe Kong, Shuo Ding, Xu Wang, Chen Pan, Shi-Jun Liang*, Feng Miao*</p>
             <p class="publication-journal">Science Advances 11, eady4798 (2025)</p>
         </div>
@@ -974,30 +1335,27 @@
         <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 32px; text-align: center;">荣誉称号</h3>
         <div class="awards-grid">
             <div class="award-card">
-                <div class="award-icon">🏆</div>
-                <h4 class="award-title">国家"博士后创新人才支持计划" A类</h4>
-                <p class="award-desc">国家级顶尖人才计划</p>
-            </div>
-            <div class="award-card">
-                <div class="award-icon">🌟</div>
-                <h4 class="award-title">南京大学"毓秀青年学者"</h4>
+                <!-- <div class="award-icon">🏆</div> -->
+                <h4 class="award-title">🏆 国家"博士后创新人才支持计划" A类</h4>
                 <p class="award-desc">2023年度</p>
             </div>
             <div class="award-card">
-                <div class="award-icon">⭐</div>
-                <h4 class="award-title">江苏省"卓越博士后"</h4>
+                <!-- <div class="award-icon">🌟</div> -->
+                <h4 class="award-title">🌟 南京大学"毓秀青年学者"</h4>
                 <p class="award-desc">2023年度</p>
             </div>
             <div class="award-card">
-                <div class="award-icon">🎖️</div>
-                <h4 class="award-title">小米青年学者科技创新奖</h4>
+                <!-- <div class="award-icon">⭐</div> -->
+                <h4 class="award-title">⭐ 江苏省"卓越博士后"</h4>
+                <p class="award-desc">2023年度</p>
+            </div>
+            <div class="award-card">
+                <!-- <div class="award-icon">🎖️</div> -->
+                <h4 class="award-title">🎖️ 小米青年学者科技创新奖</h4>
                 <p class="award-desc">2024年度</p>
             </div>
-            <div class="award-card">
-                <div class="award-icon">🔬</div>
-                <h4 class="award-title">IEEE Membership</h4>
-                <p class="award-desc">Member #98849134</p>
-            </div>
+  
+    
         </div>
 
         <h3 style="font-size: 28px; font-weight: 600; margin: 80px 0 32px; text-align: center;">重要学术奖项</h3>
@@ -1007,7 +1365,7 @@
             <p class="card-meta">指导老师 · 2023</p>
             <p class="card-description">
                 颁奖单位：共青团中央、中国科协、教育部、中国社会科学院、全国学联、贵州省人民政府<br>
-                获奖理由：带领一支本科生和研究组成的创新团队，展示了一款先进的基于SRAM的模拟存算芯片，以及基于该芯片开发的无线通信原型机，可以实现实时无线数据传输功能。
+                获奖理由：带领一支南大本科生和研究组成的创新团队，展示了一款先进的基于SRAM的模拟存算芯片，以及基于该芯片开发的无线通信原型机，可以实现实时无线数据传输功能。
             </p>
         </div>
 
@@ -1022,11 +1380,11 @@
         </div>
 
         <div class="card">
-            <h4 class="card-title">Best Poster Award × 4</h4>
+            <h4 class="card-title">Best Poster Awards</h4>
             <p class="card-description">
+                • Nature Conference: Neuromorphic Computing 2024 - 最佳海报奖：展示了一项基于存算一体芯片的高鲁棒性神经网络硬件系统，在60%的电子元器件失效条件下仍可维持正常图像识别功能<br>
                 • IEEE IWOFC 2019 - 最佳海报奖：展示了一款基于忆阻器存算芯片的智能系统<br>
                 • ICMIC 2019 - 最佳海报奖：展示了一款用忆阻器类脑芯片控制的智能小车，相比单片机提升了700倍的响应速度<br>
-                • Nature Conference: Neuromorphic Computing 2024 - 最佳海报奖：展示了一项基于存算一体芯片的高鲁棒性神经网络硬件系统，在60%的电子元器件失效条件下仍可维持正常图像识别功能<br>
                 • 第二十四届全国半导体物理学术会议 2023 - 最佳海报奖：展示了一种基于忆阻器存算芯片实现调制解调的超高能效无线通信技术
             </p>
         </div>
@@ -1051,7 +1409,7 @@
     <footer class="footer">
         <div class="footer-content">
             <p>© 2025 王聪. 保留所有权利.</p>
-            <p style="margin-top: 8px;">南京大学智能科学与技术学院 | cong@nju.edu.cn | 18752009865</p>
+            <p style="margin-top: 8px;"> cong@nju.edu.cn </p>
         </div>
     </footer>
 
@@ -1127,6 +1485,110 @@
                 navMenu.style.border = 'none';
             } else {
                 navMenu.style.display = 'none';
+            }
+        });
+                // Research Gallery
+        const researchData = [
+            {
+                title: "IGZO DRAM模拟存算芯片",
+                description: "开发了基于IGZO材料的准非易失性DRAM阵列,用于高精度模拟存内计算。该技术实现了连续可调的权重存储,保持了计算精度的同时大幅降低了功耗。相关工作在IEDM 2025会议上发表。"
+            },
+            {
+                title: "类脑计算硬件系统",
+                description: "开发了基于忆阻器的神经形态计算系统,模拟生物神经网络的工作机制。系统具有自适应学习能力和容错特性,即使在60%器件失效的情况下仍能保持正常功能。该研究为构建高鲁棒性AI系统提供了新思路。"
+            },
+            {
+                title: "并行存内无线计算",
+                description: "创新性地将存算一体技术应用于无线通信领域,实现了并行存内无线计算架构。该系统突破了传统通信架构的能效瓶颈,可实现实时无线数据传输,相关成果发表在Nature Electronics期刊。"
+            },
+            {
+                title: "智能机器人控制系统",
+                description: "基于忆阻器交叉阵列开发的机器人控制系统,相比传统单片机提升了700倍的响应速度。系统采用类脑计算架构,实现了实时环境感知和决策,为智能机器人提供了高效的硬件解决方案。"
+            },
+            {
+                title: "全模拟忆阻器网络自动驾驶小车",
+                description: "基于忆阻器交叉阵列开发的机器人控制系统,相比传统单片机提升了700倍的响应速度。系统采用类脑计算架构,实现了实时环境感知和决策,为智能机器人提供了高效的硬件解决方案。"
+            },
+            {
+                title: "🚧正在施工ing🚧",
+                description: "🚧正在施工ing🚧"
+            }
+  
+        ];
+
+        const gallery = document.querySelector('.research-gallery');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('researchModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalClose = document.querySelector('.modal-close');
+        const modalOverlay = document.querySelector('.modal-overlay');
+        const navLeft = document.querySelector('.gallery-nav-left');
+        const navRight = document.querySelector('.gallery-nav-right');
+        const dotsContainer = document.querySelector('.gallery-dots');
+
+        // Create dots
+        galleryItems.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'gallery-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => scrollToItem(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.gallery-dot');
+
+        // Gallery navigation
+        navLeft.addEventListener('click', () => {
+            gallery.scrollBy({ left: -324, behavior: 'smooth' });
+        });
+
+        navRight.addEventListener('click', () => {
+            gallery.scrollBy({ left: 324, behavior: 'smooth' });
+        });
+
+        // Update active dot on scroll
+        gallery.addEventListener('scroll', () => {
+            const scrollLeft = gallery.scrollLeft;
+            const itemWidth = 324; // 300px + 24px gap
+            const activeIndex = Math.round(scrollLeft / itemWidth);
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        });
+
+        function scrollToItem(index) {
+            const itemWidth = 324;
+            gallery.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
+        }
+
+        // Open modal
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                modalImage.src = img.src;
+                modalTitle.textContent = researchData[index].title;
+                modalDescription.textContent = researchData[index].description;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', closeModal);
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
             }
         });
     </script>
