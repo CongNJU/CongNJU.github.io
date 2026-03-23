@@ -1123,19 +1123,21 @@
                 </button>
                 
                 <div class="research-gallery">
-                    <div class="gallery-item" data-index="0">
-                        <div class="gallery-image">
-                            <img src="research1.jpg" alt="IGZO DRAM存算芯片" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E存算一体芯片%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <p class="gallery-caption">IGZO DRAM存算芯片</p>
-                    </div>
-
+                     
                     <div class="gallery-item" data-index="1">
                         <div class="gallery-image">
                             <img src="research2.jpg" alt="存算一体芯片技术突破" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E类脑计算系统%3C/text%3E%3C/svg%3E'">
                         </div>
                         <p class="gallery-caption">存算一体芯片技术突破</p>
                     </div>
+ 
+                    <div class="gallery-item" data-index="1">
+                        <div class="gallery-image">
+                            <img src="research6.jpg" alt="智能计算系统架构突破" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E类脑计算系统%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">智能计算系统架构突破</p>
+                    </div>                    
+
 
                     <div class="gallery-item" data-index="2">
                         <div class="gallery-image">
@@ -1157,7 +1159,14 @@
                         </div>
                         <p class="gallery-caption">全模拟忆阻器网络自动驾驶小车</p>
                     </div>
-                    
+
+                    <div class="gallery-item" data-index="0">
+                        <div class="gallery-image">
+                            <img src="research1.jpg" alt="IGZO DRAM存算芯片" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3E存算一体芯片%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <p class="gallery-caption">IGZO DRAM存算芯片</p>
+                    </div>
+
                     <div class="gallery-item" data-index="4">
                         <div class="gallery-image">
                             <img src="researchx.jpg" alt="正在施工" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f5f5f7%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%2386868b%22%3EIGZO DRAM%3C/text%3E%3C/svg%3E'">
@@ -1519,13 +1528,15 @@
                 // Research Gallery
         const researchData = [
             {
-                title: "IGZO DRAM模拟存算芯片",
-                description: "开发了基于IGZO材料的准非易失性DRAM阵列（58×32），实现高精度模拟存内计算。该技术实现了连续可调的权重存储,长时间（＞10000s）保持了计算精度的同时大幅降低了动态功耗。相关工作在IEDM 2025会议上发表。"
-            },
-            {
                 title: "RRAM、SRAM存算一体芯片",
                 description: "开发了基于忆阻器、SRAM的模拟存算一体芯片。在高能效的同时，实现了高精度、宽工作温区等优异特性。相关工作发表在Science Advances期刊上"
             },
+
+            {
+                title: "通信感知训练的无线协同神经网络",
+                description: "将无线通信链路作为可训练模块，联合端侧与云侧计算模块一同构成无线神经网络，通过“通信感知训练”实现全局优化，提升网络精度的同时，降低了无线通信模块的功耗，提升了系统对通信误码的容错性，为大规模低功耗边缘设备的智能互联提供了新的可能。相关工作发表在Nature Electronics期刊上"
+            },
+
             {
                 title: "基于存算芯片的无线通信系统",
                 description: "创新性地将存算一体技术应用于无线通信领域,实现了并行存内无线计算架构。该系统突破了传统通信架构的能效瓶颈,可实现实时无线数据传输,相关成果发表在Nature Electronics期刊。"
@@ -1538,6 +1549,10 @@
                 title: "全模拟忆阻器网络自动驾驶小车",
                 description: "基于忆阻器交叉阵列开发的机器人控制系统,相比传统单片机提升了700倍的响应速度。系统采用类脑计算架构,实现了实时环境感知和决策,为智能机器人提供了高效的硬件解决方案。"
             },
+            {
+                title: "IGZO DRAM模拟存算芯片",
+                description: "开发了基于IGZO材料的准非易失性DRAM阵列（58×32），实现高精度模拟存内计算。该技术实现了连续可调的权重存储,长时间（＞10000s）保持了计算精度的同时大幅降低了动态功耗。相关工作在IEDM 2025会议上发表。"
+            },            
             {
                 title: "🚧正在施工ing🚧",
                 description: "🚧正在施工ing🚧"
